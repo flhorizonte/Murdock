@@ -4,7 +4,7 @@ namespace App\Driver;
 
 class Driver {
 
-	public $pdo;
+	private $pdo;
 
 	public function __construct() {
 
