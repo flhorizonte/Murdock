@@ -1,0 +1,13 @@
+{
+    "name": "purplekraken/murdock",
+    "description": "Murdock é uma plataforma moderna de armazenamento e leitura de artigos científicos rigidamente organizados e categorizados em áreas e subáreas",
+    "type": "project",
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload":{
+    	"psr-4":{
+            "App\\":["app/"],
+            "Source\\":["src/"]
+        }
+    }
+}
