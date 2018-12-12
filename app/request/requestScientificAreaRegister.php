@@ -13,7 +13,7 @@ try {
 		$model = new ScientificAreaModel();
 		$model->setTitle($title);
 
-		$register = new Register(new ScientificArea)
+		$register = new Register(new ScientificArea())
 
 	} else {
 

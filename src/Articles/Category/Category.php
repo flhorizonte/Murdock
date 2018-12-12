@@ -2,7 +2,7 @@
 
 namespace Source\Articles\Category;
 
-class Category extends \Model implements Source\Articles\Register\Register {
+class Category extends \Model implements Source\Crud\Register\Register {
 
 	public function register() {
 

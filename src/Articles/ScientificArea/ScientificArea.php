@@ -2,7 +2,7 @@
 
 namespace Source\Articles\ScientificArea;
 
-class ScientificArea extends \Model implements Source\Articles\Register\Register {
+class ScientificArea extends \Model implements Source\Crud\Register\Register {
 
 	public function register() {
 

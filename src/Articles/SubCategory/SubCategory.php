@@ -2,7 +2,7 @@
 
 namespace Source\Articles\SubCategory;
 
-class SubCategory extends \Model implements Source\Articles\Register\Register {
+class SubCategory extends \Model implements Source\Crud\Register\Register {
 
 	public function register() {
 

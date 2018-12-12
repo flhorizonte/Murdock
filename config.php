@@ -17,7 +17,11 @@ use Source\Articles\Category\Category as Category;
 use Source\Articles\ScientificArea\ScientificArea as ScientificArea;
 use Source\Articles\SubCategory\SubCategory as SubCategory;
 
-use Source\Articles\Register as Register;
+//crud
+use Source\Crud\Register as Register;
+use Source\Crud\Search as Search;
+use Source\Crud\Update as Update;
+use Source\Crud\Delete as Delete;
 
 //Article models
 use Source\Articles\Article\Model as ArticleModel;
