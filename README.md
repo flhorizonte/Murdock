@@ -5,7 +5,7 @@ Murdock é uma plataforma moderna de armazenamento e leitura de artigos científ
 
 ## Tecnologias Utilizadas no desenvolvimento backend
 
-[![Sistema Operacional](https://i.imgur.com/jDIpfbU.png)](https://getfedora.org/pt_BR/)
+[![FedoraLinux](https://i.imgur.com/I0BAOUR.png)](https://getfedora.org/pt_BR/)
 [![PHP](https://i.imgur.com/Ti7DKmH.png)](https://secure.php.net/manual/pt_BR/intro-whatis.php)
 [![mysql](https://i.imgur.com/iNDsxjH.png)](https://www.mysql.com/products/workbench/)
 [![Editor de Texto](https://i.imgur.com/ncdkhUn.png)](https://www.sublimetext.com/)
