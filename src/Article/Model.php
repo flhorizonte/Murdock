@@ -1,6 +1,6 @@
 <?php
 
-namespace Source\Articles\Article;
+namespace Source\Article;
 
 class Model {
 
@@ -80,13 +80,6 @@ class Model {
      *
      * @return self
      */
-    public function setSubCategory($subCategory)
-    {
-        $this->subCategory = $subCategory;
-
-        return $this;
-    }
-
     /**
      * @return mixed
      */

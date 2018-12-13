@@ -2,7 +2,7 @@
 
 namespace Source\Users;
 
-class Register extends \UserModel {
+class User extends \Model implements Source\Crud\Register\Register {
 
 	public function register() {
 

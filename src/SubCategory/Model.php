@@ -1,6 +1,6 @@
 <?php
 
-namespace Source\Articles\SubCategory;
+namespace Source\SubCategory;
 
 class Model {
 

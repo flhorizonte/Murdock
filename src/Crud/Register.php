@@ -9,8 +9,10 @@ interface Register {
 
 class Register {
 
-	public function register(Register $register) {
+	public function __construct(Register $register) {
 
 		$register->register();
 	}
+
+	public function register(Register $register) {}
 }

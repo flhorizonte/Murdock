@@ -1,6 +1,6 @@
 <?php
 
-namespace Source\Articles\Category;
+namespace Source\Category;
 
 class Category extends \Model implements Source\Crud\Register\Register {
 

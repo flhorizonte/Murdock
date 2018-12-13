@@ -1,11 +1,15 @@
 <?php
 
-namespace App\Request;
+namespace App\Request\User;
 
-require_once("../../config.php");
-
+require_once("../../../../config.php");
+/**
+ * ARQUIVO QUE IRÁ RECEBER AS REQUSIÇÕES EM JAVASCRIPT PARA CADASTRAR ARTIGOS
+ */
 try {
-
+	/**
+	 * Tu tem quer mandar requisições POST em, n manda get que não vai funfar.
+	 */
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		//add var filters to improve security
@@ -26,18 +30,18 @@ try {
 		$model->setEmail($email);
 		$model->setPass($pass);
 
-		$register = new UserRegister();
-		$register->register();
+		$register = new Register(new User());
 
 	} else {
 
-		throw new \Exception("No post vars requested");
+		throw new \Exception("TEM QUE MANDAR POST MANO");
 	}
-	
+
 
 } catch (\Exception $error) {
 
+	//SAIDA PARA O JAVASCRIPT EM JSON :)
 	echo json_encode([
-		"Message" => $error->getMessage()
+		"ERROR" => $error->getMessage()
 	]);
 }

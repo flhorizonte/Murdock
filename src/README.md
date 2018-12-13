@@ -1,0 +1,1 @@
+# Local classes lógicas

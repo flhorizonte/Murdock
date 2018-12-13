@@ -9,13 +9,13 @@ use Source\Users\Model as UserModel;
 
 //User
 use Source\Users\Login as Login;
-use Source\Users\Register as UserRegister;
+use Source\Users\User as User;
 
 //Article
-use Source\Articles\Article\Article as Article;
-use Source\Articles\Category\Category as Category;
-use Source\Articles\ScientificArea\ScientificArea as ScientificArea;
-use Source\Articles\SubCategory\SubCategory as SubCategory;
+use Source\Article\Article as Article;
+use Source\Category\Category as Category;
+use Source\ScientificArea\ScientificArea as ScientificArea;
+use Source\SubCategory\SubCategory as SubCategory;
 
 //crud
 use Source\Crud\Register as Register;
@@ -24,7 +24,7 @@ use Source\Crud\Update as Update;
 use Source\Crud\Delete as Delete;
 
 //Article models
-use Source\Articles\Article\Model as ArticleModel;
-use Source\Articles\Category\Model as CategoryModel;
-use Source\Articles\ScientificArea\Model as ScientificAreaModel;
-use Source\Articles\SubCategory\Model as SubCategoryModel;
+use Source\Article\Model as ArticleModel;
+use Source\Category\Model as CategoryModel;
+use Source\ScientificArea\Model as ScientificAreaModel;
+use Source\SubCategory\Model as SubCategoryModel;

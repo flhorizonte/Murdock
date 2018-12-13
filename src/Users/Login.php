@@ -1,8 +1,8 @@
 <?php
 
-namespace Source\Users; 
+namespace Source\Users;
 
-class Login extends \UserModel {
+class Login extends \Model {
 
 	public function login() {
 
@@ -10,7 +10,7 @@ class Login extends \UserModel {
 		//replace for join as soon as possible
 		$stmt = $sql->query("SELECT * FROM user WHERE email = :email AND senha = :senha",[
 			":email" => $this->getEmail(), ":senha" => $this->getSenha()
-		]); 
+		]);
 		$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		if(count($data[0]) > 0) {

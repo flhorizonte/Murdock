@@ -1,6 +1,6 @@
 <?php
 
-namespace Source\Articles\ScientificArea;
+namespace Source\ScientificArea;
 
 class Model {
 

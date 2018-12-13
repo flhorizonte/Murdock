@@ -1,11 +1,16 @@
 <?php
 
-namespace App\Request;
+namespace App\Request\Register\Article;
 
-require_once("../../config.php");
-
+require_once("../../../../config.php");
+/**
+ * ARQUIVO QUE IRÁ RECEBER AS REQUSIÇÕES EM JAVASCRIPT PARA CADASTRAR ARTIGOS
+ */
 try {
 
+	/**
+	 * Tu tem quer mandar requisições POST em, n manda GET que não vai funfar.
+	 */
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		$title = $_POST["title"];
@@ -25,11 +30,16 @@ try {
 
 		$register = new Register(new Article());
 
+	} else {
+
+		throw new \Exception("TEM QUE MANDAR POST MANO");
+
 	}
 
-} catch (Exception $error) {
+} catch (\Exception $error) {
 
+	//SAIDA PARA O JAVASCRIPT EM JSON :)
 	echo json_encode([
-		"Message" => $error->getMessage()
+		"ERROR" => $error->getMessage()
 	]);
 }
