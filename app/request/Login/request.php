@@ -7,7 +7,6 @@ require_once("../../../config.php");
  * ARQUIVO QUE IRÁ RECEBER AS REQUSIÇÕES EM JAVASCRIPT PARA EFETUAR O LOGIN DO USUARIO
  */
 try {
-
 	/**
 	 * Tu tem quer mandar requisições POST em, n manda get que não vai funfar.
 	 */

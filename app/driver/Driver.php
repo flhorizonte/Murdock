@@ -1,22 +1,20 @@
 <?php
 
-namespace App\Driver;
+namespace App\driver;
 
 class Driver {
 
 	private $pdo;
 
-	public function __construct($host, $dbname, $user, $pass) {
+	public function __construct() {
 
-		$this->pdo = new \PDO("mysql:host=localhost;dbname=murdock","root","151280");
+        $this->pdo = new \PDO("mysql:host=localhost;dbname=murdock","root","151280");
 	}
 
 	public function query($queryString, $params = []) {
 
 		$stmt = $this->pdo->prepare($queryString);
-
 		self::defineBindParams($stmt, $params);
-
 		$stmt->execute();
 
 		return $stmt;
@@ -26,7 +24,7 @@ class Driver {
 
 		foreach ($params as $key => $value) {
 
-			$stmt->bindParams($key, $value);
+			$stmt->bindParam($key, $value);
 		}
 	}
 }

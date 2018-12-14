@@ -2,21 +2,13 @@
 
 namespace Source\ScientificArea;
 
-class ScientificArea extends \Model implements Source\Crud\Register\Register {
+class ScientificArea extends Model{
 
-	public function register() {
+	public function register($banco) {
 
-		$sql = new App\driver\Driver();
+		$stmt = $banco->query($this->getQuery(),$this->getParams());
 
-		$stmt = $sql->query("INSERT INTO areas(title) VALUES(:title)",[":title" => $this->getTitle()]);
-
-		if(count($stmt) > 0) {
-
-			throw new Exception("Cadastro concluído");
-
-		} else {
-
-			throw new Exception("Falha no cadastro");
-		}
+		return $stmt;
 	}
+
 }

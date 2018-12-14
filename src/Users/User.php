@@ -2,7 +2,7 @@
 
 namespace Source\Users;
 
-class User extends \Model implements Source\Crud\Register\Register {
+class User extends \Model {
 
 	public function register() {
 
@@ -19,4 +19,29 @@ class User extends \Model implements Source\Crud\Register\Register {
 			throw new Exception("Email e/ou senha incorretos.");
 		}
 	}
+
+	public function login() {
+
+		$sql = new App\driver\Driver();
+		//replace for join as soon as possible
+		$stmt = $sql->query("SELECT * FROM user WHERE email = :email AND senha = :senha",[
+			":email" => $this->getEmail(), ":senha" => $this->getSenha()
+		]);
+		$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		if(count($data[0]) > 0) {
+
+            self::efetuarLogin($data[0]);
+		} else {
+			throw new Exception("Email e/ou senha incorretos.");
+		}
+    }
+
+    private static function efetuarLogin($data = []){
+
+        foreach($datas as $key => $value) {
+
+            $_SESSION[$key] = $value;
+        }
+    }
 }

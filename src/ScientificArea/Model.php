@@ -4,23 +4,85 @@ namespace Source\ScientificArea;
 
 class Model {
 
-	private $title;
+    private $title;
+	private $driver;
+
+	private $query;
+    private $params = [];
 
     /**
-     * @return mixed
-     */
-    public function getTitle() {
+	 * Get the value of query
+	 */
+	public function getQuery()
+	{
+		return $this->query;
+	}
 
-        return $this->title;
-    }
+	/**
+	 * Set the value of query
+	 *
+	 * @return  self
+	 */
+	public function setQuery($query)
+	{
+		$this->query = $query;
 
-    /**
-     * @param mixed $title
-     *
-     * @return self
-     */
-    public function setTitle($area) {
+	}
 
-        $this->area = $area;
-    }
+	/**
+	 * Get the value of params
+	 */
+	public function getParams()
+	{
+		return $this->params;
+	}
+
+	/**
+	 * Set the value of params
+	 *
+	 * @return  self
+	 */
+	public function setParams($params)
+	{
+		$this->params = $params;
+
+	}
+
+	/**
+	 * Get the value of title
+	 */
+	public function getTitle()
+	{
+		return $this->title;
+	}
+
+	/**
+	 * Set the value of title
+	 *
+	 * @return  self
+	 */
+	public function setTitle($title)
+	{
+		$this->title = $title;
+
+	}
+
+	/**
+	 * Get the value of driver
+	 */
+	public function getDriver()
+	{
+		return $this->driver;
+	}
+
+	/**
+	 * Set the value of driver
+	 *
+	 * @return  self
+	 */
+	public function setDriver($driver)
+	{
+		$this->driver = $driver;
+
+	}
 }
