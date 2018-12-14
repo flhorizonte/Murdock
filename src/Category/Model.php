@@ -1,6 +1,6 @@
 <?php
 
-namespace Source\Articles\Category;
+namespace Source\Category;
 
 class Model {
 
@@ -10,7 +10,7 @@ class Model {
     /**
      * @return mixed
      */
-    public function getTitle(){
+    public function getTitle():string {
 
         return $this->title;
     }
@@ -28,7 +28,7 @@ class Model {
     /**
      * @return mixed
      */
-    public function getArea(){
+    public function getArea():int {
 
         return $this->area;
     }

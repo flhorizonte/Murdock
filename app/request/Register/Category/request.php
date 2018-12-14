@@ -3,6 +3,9 @@
 namespace App\Request\Register\Category;
 
 require_once("../../../../config.php");
+
+use Source\Category\Category as Category;
+use App\driver\Driver as Driver;
 /**
  * ARQUIVO QUE IRÁ RECEBER AS REQUSIÇÕES EM JAVASCRIPT PARA CADASTRAR ARTIGOS
  */
@@ -15,22 +18,25 @@ try {
 		$title = $_POST["title"];
 		$areas = $_POST["area"];
 
-		$model = new CategoryModel();
-		$model->setTitle($title);
-		$model->setArea($title);
+		$category = new Category();
+		$category->setTitle($title);
+		$category->setArea($areas);
 
-		$register = new Register(new Category);
-
+		if($category->register()) {
+			//true
+			throw new \Exception("Cadastro concluido");
+		} else {
+			//false
+			throw new \Exception("Falha no cadastro");
+		}
 	} else {
-
 		throw new \Exception("TEM QUE MANDAR POST MANO");
-
 	}
 
 } catch (\Exception $e) {
 
 	//SAIDA PARA O JAVASCRIPT EM JSON :)
-	echo json_encode([
-		"ERROR" => $e->getMessage()
-	]);
+	echo json_encode(array("Message" => $e->getMessage()));
+} finally {
+
 }

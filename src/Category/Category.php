@@ -2,24 +2,19 @@
 
 namespace Source\Category;
 
-class Category extends \Model implements Source\Crud\Register\Register {
+class Category extends Model {
+
+	private $query;
+
+	public function __construct() {
+
+		$this->query = new \App\driver\Driver();
+	}
 
 	public function register() {
 
-		$sql = new App\driver\Driver();
+		$stmt = $this->query->query("INSERT INTO `category`(`title`,`areas_id`) VALUES (:titulo, :AREA)",[":titulo" => $this->getTitle(),":AREA" => $this->getArea()]);
 
-		$stmt = $sql->query("INSERT INTO category
-		(title,areas_id)
-		VALUES
-		(:title,:area)",
-		[":title" => $this->getModel(), ":area" => $this->getArea()]);
-
-		if(count($stmt) > 0) {
-
-			throw new Exception("Cadastro concluído");
-		} else {
-
-			throw new Exception("Falha no cadastro");
-		}
+		return $stmt;
 	}
 }
