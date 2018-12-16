@@ -14,7 +14,9 @@ class Driver {
 	public function query($queryString, $params = []) {
 
 		$stmt = $this->pdo->prepare($queryString);
+
 		self::defineBindParams($stmt, $params);
+
 		$stmt->execute();
 
 		return $stmt;

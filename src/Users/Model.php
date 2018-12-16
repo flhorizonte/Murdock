@@ -11,7 +11,7 @@ class Model {
 	public $country;
 	public $name;
 	public $email;
-	public $pass;
+  public $pass;
 
     /**
      * @return mixed

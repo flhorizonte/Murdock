@@ -4,11 +4,19 @@ namespace Source\ScientificArea;
 
 class ScientificArea extends Model{
 
-	public function register($banco) {
+	public function register() {
 
-		$stmt = $banco->query($this->getQuery(),$this->getParams());
+		$sql = new App\driver\Driver();
 
-		return $stmt;
+		$stmt = $sql->query("INSERT INTO `areas`(`title`) VALUES (:TITLE)",[":TITLE" => $title]);
+
+		if($stmt) {
+
+			throw new \SuccesException("Cadastro concluido");
+		} else {
+
+			throw new \Exception("Email e/ou senha incorretos.");
+		}
 	}
 
 }

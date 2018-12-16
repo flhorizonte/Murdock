@@ -2,46 +2,84 @@
 
 namespace Source\Users;
 
-class User extends \Model {
+class User extends Model {
 
 	public function register() {
 
-		$sql = new App\driver\Driver();
+		$sql = new \App\driver\Driver();
 
-		$stmt = $sql->query("INSERT INTO user (name,email,pass,permission_id,city_id,city_state_id,city_state_country_id) VALUES (:name,:email,:pass,:idperm,:city,:state,:country)",
-			[":name" => $this->getName(),":email" => $this->getEmail(),":pass" => $this->getPass(),":idperm" => $this->getIdpermission(),":city" => $this->getCity(),":state" => $this->getState(),":country" => $this->getCountry()]);
+		$stmt = $sql->query("INSERT INTO user (
+			name,
+			email,
+			pass,
+			permission_id,
+			city_id,
+			city_state_id,
+			city_state_country_id
+			) VALUES (
+				:name,
+				:email,
+				:pass,
+				:idperm,
+				:city,
+				:state,
+				:country
+			)",
+			[
+				":name" => $this->getName(),
+				":email" => $this->getEmail(),
+				":pass" => $this->getPass(),
+				":idperm" => $this->getIdpermission(),
+				":city" => $this->getCity(),
+				":state" => $this->getState(),
+				":country" => $this->getCountry()
+			]
+		);
 
-		if(count($stmt) > 0) {
+		if($stmt) {
 
-			throw new Exception("Cadastro concluido");
+			throw new \SuccesException("Cadastro concluido");
 		} else {
 
-			throw new Exception("Email e/ou senha incorretos.");
+			throw new \Exception("Email e/ou senha incorretos.");
 		}
 	}
 
 	public function login() {
 
-		$sql = new App\driver\Driver();
-		//replace for join as soon as possible
-		$stmt = $sql->query("SELECT * FROM user WHERE email = :email AND senha = :senha",[
-			":email" => $this->getEmail(), ":senha" => $this->getSenha()
-		]);
-		$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			$sql = new \App\driver\Driver();
 
-		if(count($data[0]) > 0) {
+			//replace for join as soon as possible
+			$stmt = $sql->query("SELECT * FROM user WHERE email = :email AND senha = :senha",
+			[
+				":email" => $this->getEmail(),
+				":senha" => $this->getSenha()
+			]);
 
-            self::efetuarLogin($data[0]);
-		} else {
-			throw new Exception("Email e/ou senha incorretos.");
-		}
+			$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+			if(count($data[0]) > 0) {
+
+	   		self::efetuarLogin($data[0]);
+				
+			} else {
+
+				throw new \Exception("Email e/ou senha incorretos.");
+			}
     }
 
     private static function efetuarLogin($data = []){
 
         foreach($datas as $key => $value) {
 
-            $_SESSION[$key] = $value;
+					if(!isset($_SESSION["user"][$key])){
+
+						$_SESSION["user"][$key] = $value;
+					} else {
+
+						throw new \Exception("Você ja está logado");
+						break;
+					}
         }
     }
 }

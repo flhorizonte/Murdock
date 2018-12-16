@@ -2,7 +2,7 @@
 
 namespace Source\Article;
 
-class Article extends \Model implements Source\Crud\Register\Register {
+class Article extends Model {
 
 	public function register() {
 
@@ -23,7 +23,7 @@ class Article extends \Model implements Source\Crud\Register\Register {
 			    :SUB,
 				 :CATEGORY,
 				  :AREAS
-				  )",
+				)",
 		 [
 		 ":TITLE" => $this->getTitle(),
 		 ":CONTENT" => $this->getContent(),
@@ -35,10 +35,10 @@ class Article extends \Model implements Source\Crud\Register\Register {
 
     	if($stmt) {
 
-			throw new Exception("Cadastro concluído");
+			throw new \SuccesException("Cadastro concluído");
 		} else {
 
-			throw new Exception("Falha no cadastro");
+			throw new \Exception("Falha no cadastro");
 		}
  	}
 }

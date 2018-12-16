@@ -4,17 +4,22 @@ namespace Source\Category;
 
 class Category extends Model {
 
-	private $query;
-
-	public function __construct() {
-
-		$this->query = new \App\driver\Driver();
-	}
-
 	public function register() {
 
-		$stmt = $this->query->query("INSERT INTO `category`(`title`,`areas_id`) VALUES (:titulo, :AREA)",[":titulo" => $this->getTitle(),":AREA" => $this->getArea()]);
+		$sql = new \App\driver\Driver();
 
-		return $stmt;
+		$stmt = $sql->query("INSERT INTO `category`(`title`,`areas_id`) VALUES (:titulo,:AREA)",
+		[
+			":titulo" => $this->getTitle(),
+			":AREA" => $this->getArea()
+		]);
+
+		if($stmt) {
+
+			throw new \SuccesException('Falha no cadastro');
+		} else {
+
+			throw new \Exception('Cadastro concluido');
+		}
 	}
 }
