@@ -29,4 +29,16 @@ class Driver {
 			$stmt->bindParam($key, $value);
 		}
 	}
+
+	public function select($query, $params = null) {
+
+		$stmt = $this->query($query, $params);
+
+		if($stmt) {
+
+			$data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+			return $data;
+		}
+	}
 }

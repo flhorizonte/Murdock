@@ -5,7 +5,10 @@ namespace Source\Category;
 class Model {
 
 	private $title;
-	private $area;
+    private $area;
+
+    private $query;
+    private $params = [];
 
     /**
      * @return mixed
@@ -41,5 +44,43 @@ class Model {
     public function setArea($area){
 
         $this->area = $area;
+    }
+
+    /**
+     * Get the value of params
+     */
+    public function getParams()
+    {
+        return $this->params;
+    }
+
+    /**
+     * Set the value of params
+     *
+     * @return  self
+     */
+    public function setParams($params)
+    {
+        $this->params = $params;
+
+    }
+
+    /**
+     * Get the value of query
+     */
+    public function getQuery()
+    {
+        return $this->query;
+    }
+
+    /**
+     * Set the value of query
+     *
+     * @return  self
+     */
+    public function setQuery($query)
+    {
+        $this->query = $query;
+
     }
 }

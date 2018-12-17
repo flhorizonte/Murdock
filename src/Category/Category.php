@@ -16,10 +16,25 @@ class Category extends Model {
 
 		if($stmt) {
 
-			throw new \SuccesException('Falha no cadastro');
+			throw new \Exception('Falha no cadastro');
 		} else {
 
 			throw new \Exception('Cadastro concluido');
 		}
+	}
+
+	public function select() {
+
+		$sql = new \App\driver\Driver();
+
+		$data = $sql->select($this->getQuery(), $this->getParams());
+
+		if(count($data) < 1) {
+
+            throw new \Exception("Nenhuma categoria encontrada no banco de dados");
+        } else {
+
+            return $data;
+        }
 	}
 }

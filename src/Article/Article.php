@@ -40,5 +40,20 @@ class Article extends Model {
 
 			throw new \Exception("Falha no cadastro");
 		}
- 	}
+	 }
+
+	 public function select() {
+
+		$sql = new \App\driver\Driver();
+
+		$stmt = $sql->select($this->getQuery(), $this->getParams());
+
+		if(count($stmt) < 1) {
+
+			throw new \Exception("Nenhum artigo encontrado");
+		} else {
+
+			return $stmt;
+		}
+	 }
 }

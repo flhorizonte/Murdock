@@ -11,7 +11,10 @@ class Model {
 	public $country;
 	public $name;
 	public $email;
-  public $pass;
+    public $pass;
+
+    private $query;
+    private $params = [];
 
     /**
      * @return mixed
@@ -156,5 +159,41 @@ class Model {
     public function setIdpermission($idpermission)
     {
         $this->idpermission = $idpermission;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParams()
+    {
+        return $this->params;
+    }
+
+    /**
+     * @param mixed $params
+     *
+     * @return self
+     */
+    public function setParams($params)
+    {
+        $this->params = $params;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getQuery()
+    {
+        return $this->query;
+    }
+
+    /**
+     * @param mixed $query
+     *
+     * @return self
+     */
+    public function setQuery($query)
+    {
+        $this->query = $query;
     }
 }

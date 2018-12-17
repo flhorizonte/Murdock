@@ -1,6 +1,6 @@
 <?php
 
-namespace App\request;
+namespace App\request\Login;
 
 require_once("../../../config.php");
 

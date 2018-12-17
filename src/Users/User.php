@@ -47,39 +47,54 @@ class User extends Model {
 
 	public function login() {
 
-			$sql = new \App\driver\Driver();
+		$sql = new \App\driver\Driver();
 
-			//replace for join as soon as possible
-			$stmt = $sql->query("SELECT * FROM user WHERE email = :email AND senha = :senha",
-			[
-				":email" => $this->getEmail(),
-				":senha" => $this->getSenha()
-			]);
+		//replace for join as soon as possible
+		$stmt = $sql->query("SELECT * FROM user WHERE email = :email AND senha = :senha",[":email" => $this->getEmail(),":senha" => $this->getSenha()]);
 
-			$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-			if(count($data[0]) > 0) {
+		if(count($data[0]) > 0) {
 
 	   		self::efetuarLogin($data[0]);
-				
-			} else {
 
-				throw new \Exception("Email e/ou senha incorretos.");
-			}
+		} else {
+
+			throw new \Exception("Email e/ou senha incorretos.");
+		}
     }
 
     private static function efetuarLogin($data = []){
 
         foreach($datas as $key => $value) {
 
-					if(!isset($_SESSION["user"][$key])){
+			if(!isset($_SESSION["user"][$key])){
 
-						$_SESSION["user"][$key] = $value;
-					} else {
+				$_SESSION["user"][$key] = $value;
+			} else {
 
-						throw new \Exception("Você ja está logado");
-						break;
-					}
+				throw new \Exception("Você ja está logado");
+				break;
+			}
         }
+    }
+
+    public function select() {
+
+    	$sql = new \App\driver\Driver();
+
+    	//implement a better query
+    	$stmt = $sql->query($this->getQuery(), $this->getParams());
+
+    	$data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+    	if(count($data) > 0) {
+
+   			return $data;
+
+    	} else {
+
+    		throw new \Exception("Nenhum cliente encontrado");
+    	}
     }
 }

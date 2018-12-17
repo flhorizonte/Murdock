@@ -32,4 +32,20 @@ class SubCategory extends Model {
 			throw new \Exception("Falha no cadastro");
 		}
 	}
+
+	public function select() {
+
+		$sql = new \App\driver\Driver();
+
+		$data = $sql->select($this->getQuery(), $this->getParams());
+
+		if(count($data) < 1) {
+
+			throw new \Exception("Nenhuma sub categoria encontrada");
+		} else {
+
+			return $data;
+		}
+
+	}
 }

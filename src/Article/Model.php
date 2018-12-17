@@ -9,7 +9,9 @@ class Model {
 	private $userid;
 	private $subCategory;
 	private $category;
-	private $area;
+    private $area;
+    private $query;
+    private $params = [];
 
     /**
      * @return mixed
@@ -118,5 +120,41 @@ class Model {
         $this->area = $area;
 
         return $this;
+    }
+
+    /**
+     * Get the value of query
+     */
+    public function getQuery()
+    {
+        return $this->query;
+    }
+
+    /**
+     * Set the value of query
+     *
+     * @return  self
+     */
+    public function setQuery($query)
+    {
+        $this->query = $query;
+    }
+
+    /**
+     * Get the value of params
+     */
+    public function getParams()
+    {
+        return $this->params;
+    }
+
+    /**
+     * Set the value of params
+     *
+     * @return  self
+     */
+    public function setParams($params)
+    {
+        $this->params = $params;
     }
 }

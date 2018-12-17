@@ -1,6 +1,6 @@
 <?php
 
-namespace App\request;
+namespace App\request\Register;
 
 require_once("../../../config.php");
 
@@ -8,6 +8,7 @@ use Source\Users\User as User;
 
 \App\request\Request::requestTreatment(function () {
 
+	//recebimento dos dados
 	$idPermission = $_POST["idPermission"];
 	$city = $_POST["city"];
 	$state = $_POST["state"];
