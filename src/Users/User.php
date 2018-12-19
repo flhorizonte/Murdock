@@ -50,11 +50,10 @@ class User extends Model {
 		$sql = new \App\driver\Driver();
 
 		//replace for join as soon as possible
-		$stmt = $sql->query("SELECT * FROM user WHERE email = :email AND senha = :senha",[":email" => $this->getEmail(),":senha" => $this->getSenha()]);
+		$stmt = $this->select();
+		//"SELECT * FROM user WHERE email = :email AND senha = :senha",[":email" => $this->getEmail(),":senha" => $this->getSenha()]
 
-		$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-		if(count($data[0]) > 0) {
+		if(count($stmt[0]) > 0) {
 
 	   		self::efetuarLogin($data[0]);
 
@@ -84,11 +83,9 @@ class User extends Model {
     	$sql = new \App\driver\Driver();
 
     	//implement a better query
-    	$stmt = $sql->query($this->getQuery(), $this->getParams());
+    	$stmt = $sql->select($this->getQuery(), $this->getParams());
 
-    	$data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-
-    	if(count($data) > 0) {
+    	if(count($stmt) > 0) {
 
    			return $data;
 
@@ -97,4 +94,5 @@ class User extends Model {
     		throw new \Exception("Nenhum cliente encontrado");
     	}
     }
+    
 }

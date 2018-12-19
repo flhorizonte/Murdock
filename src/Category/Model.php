@@ -2,9 +2,11 @@
 
 namespace Source\Category;
 
-class Model {
+class Model
+{
 
-	private $title;
+    private $id;
+    private $title;
     private $area;
 
     private $query;
@@ -13,7 +15,8 @@ class Model {
     /**
      * @return mixed
      */
-    public function getTitle():string {
+    public function getTitle() : string
+    {
 
         return $this->title;
     }
@@ -23,7 +26,8 @@ class Model {
      *
      * @return self
      */
-    public function setTitle($title){
+    public function setTitle($title)
+    {
 
         $this->title = $title;
     }
@@ -31,7 +35,8 @@ class Model {
     /**
      * @return mixed
      */
-    public function getArea():int {
+    public function getArea() : int
+    {
 
         return $this->area;
     }
@@ -41,7 +46,8 @@ class Model {
      *
      * @return self
      */
-    public function setArea($area){
+    public function setArea($area)
+    {
 
         $this->area = $area;
     }
@@ -83,4 +89,24 @@ class Model {
         $this->query = $query;
 
     }
+
+    /**
+     * Get the value of id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+
 }

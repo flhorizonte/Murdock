@@ -2,15 +2,17 @@
 
 namespace Source\ScientificArea;
 
-class ScientificArea extends Model{
+class ScientificArea extends Model
+{
 
-	public function register() {
+	public function register()
+	{
 
 		$sql = new \App\driver\Driver();
 
-		$stmt = $sql->query("INSERT INTO `areas`(`title`) VALUES (:TITLE)",[":TITLE" => $title]);
+		$stmt = $sql->query("INSERT INTO `areas`(`title`) VALUES (:TITLE)", [":TITLE" => $title]);
 
-		if($stmt) {
+		if ($stmt) {
 
 			throw new \Exception("Cadastro concluido.");
 		} else {
@@ -20,18 +22,29 @@ class ScientificArea extends Model{
 	}
 
 
-	public function select() {
+	public function select()
+	{
 
 		$sql = new \App\driver\Driver();
 
 		$data = $sql->select($this->getQuery(), $this->getParams());
 
-		if(count($data) < 1) {
+		if (count($data) < 1) {
 
-            throw new \Exception("Nenhuma area de conhecimento encontrada no banco de dados");
-        } else {
+			throw new \Exception("Nenhuma area de conhecimento encontrada no banco de dados");
+		} else {
 
-            return $data;
-        }
+			return $data;
+		}
 	}
+
+	public function getDivTitleAndData()
+	{
+		$this->setQuery("SELECT area.title, area.id  FROM areas area");
+		$data = $this->select();
+
+		\App\request\Request::genDivsTitle($data[0]['title']);
+		\App\request\Request::genDivsExplore($data, 'page=explore&category');
+	}
+
 }

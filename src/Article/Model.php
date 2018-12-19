@@ -12,6 +12,7 @@ class Model {
     private $area;
     private $query;
     private $params = [];
+    private $id;
 
     /**
      * @return mixed
@@ -156,5 +157,23 @@ class Model {
     public function setParams($params)
     {
         $this->params = $params;
+    }
+
+    /**
+     * Get the value of id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 }
