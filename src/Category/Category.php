@@ -50,7 +50,7 @@ class Category extends Model
 		$this->setParams([":ID" => $this->getId()]);
 		$data = $this->select();
 
-		\App\request\Request::genDivsTitle($data[0]['title']);
+		\App\request\Request::genDivsTitle($data[0]['title'], $this->getDivData(), 'page=explore&sub');
 	}
 
 	public function getDivData()
@@ -60,7 +60,6 @@ class Category extends Model
 		$this->setParams([":ID" => $this->getId()]);
 		$data = $this->select();
 
-		\App\request\Request::genDivsExplore($data, 'page=explore&sub');
-
+		return $data;
 	}
 }

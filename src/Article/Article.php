@@ -68,7 +68,7 @@ class Article extends Model
         $this->setParams([":ID" => $this->getId()]);
 		$data = $this->select();
 
-		\App\request\Request::genDivsTitle($data[0]['title']);
+		\App\request\Request::genDivsTitle($data[0]['title'], $this->getDivData(), 'page=explore&article');
 	}
 
 	public function getDivData()
@@ -77,6 +77,6 @@ class Article extends Model
 		$this->setParams([":ID" => $this->getId()]);
         $data = $this->select();
 
-        \App\request\Request::genDivsExplore($data, 'page=explore&article');
+		return $data;
 	}
 }

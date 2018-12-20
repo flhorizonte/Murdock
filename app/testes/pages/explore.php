@@ -19,7 +19,7 @@ use \Source\Article\Article as Article;
         //buscar titulo da pagina da respectiva area de conhecimento
         $category->getDivTitle(); // titulo da pagina
         //exibir as categorias da respectiva area de conhecimento
-        $category->getDivData(); //corpo das divs
+         //corpo das divs
 
 
     } else if (isset($_GET["sub"])) {
@@ -29,7 +29,7 @@ use \Source\Article\Article as Article;
         //buscar titulo da respectiva categoria
         $sub_category->getDivTitle();
         //exibir as sub categorias da categoria em questao
-        $sub_category->getDivData();
+
 
     } else if (isset($_GET["article"])) {
 
@@ -38,7 +38,7 @@ use \Source\Article\Article as Article;
         #buscar o titulo da respectiva sub categoria
         $article->getDivTitle();
         #buscando e imprimindo os artigos encontrados da categoria em questao
-        $article->getDivData();
+
 
     } else {
 

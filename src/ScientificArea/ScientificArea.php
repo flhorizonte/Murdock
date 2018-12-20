@@ -43,8 +43,7 @@ class ScientificArea extends Model
 		$this->setQuery("SELECT area.title, area.id  FROM areas area");
 		$data = $this->select();
 
-		\App\request\Request::genDivsTitle($data[0]['title']);
-		\App\request\Request::genDivsExplore($data, 'page=explore&category');
+		\App\request\Request::genDivsTitle($data[0]['title'], $data, 'page=explore&category');
 	}
 
 }

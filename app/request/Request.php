@@ -60,13 +60,18 @@ class Request
         }
     }
 
-    public static function genDivsTitle($title)
+    public static function genDivsTitle($title, $data, $link)
     {
 
         ?>
          <h4 class="deep-purple-text darken-2-text center"><?= $title ?></h4>
              <div class="container">
-             <div class="row center">
+                <div class="row center">
+                    <?php
+                        self::genDivsExplore($data, $link);
+                    ?>
+                </div>
+             </div>
          <?php
 
     }

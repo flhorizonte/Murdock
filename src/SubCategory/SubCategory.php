@@ -57,15 +57,15 @@ class SubCategory extends Model
         $this->setParams([":ID" => $this->getId()]);
 		$data = $this->select();
 
-		\App\request\Request::genDivsTitle($data[0]['title']);
+		\App\request\Request::genDivsTitle($data[0]['title'], $this->getDivData(), 'page=explore&article');
 	}
 
 	public function getDivData()
 	{
 		$this->setQuery("SELECT s.id, s.title FROM sub_category s, category c WHERE c.id = s.category_id AND s.category_id = :ID");
 		$this->setParams([":ID" => $this->getId()]);
-        $data = $this->select();
+		$data = $this->select();
 
-        \App\request\Request::genDivsExplore($data, 'page=explore&article');
+		return $data;
 	}
 }
