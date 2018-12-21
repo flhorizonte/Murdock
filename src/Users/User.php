@@ -2,13 +2,14 @@
 
 namespace Source\Users;
 
-class User extends Model {
-
-	public function register() {
-
+class User extends Model
+{
+	public function register()
+	{
 		$sql = new \App\driver\Driver();
 
-		$stmt = $sql->query("INSERT INTO user (
+		$stmt = $sql->query(
+			"INSERT INTO user (
 			name,
 			email,
 			pass,
@@ -16,16 +17,7 @@ class User extends Model {
 			city_id,
 			city_state_id,
 			city_state_country_id
-			) VALUES (
-				:name,
-				:email,
-				:pass,
-				:idperm,
-				:city,
-				:state,
-				:country
-			)",
-			[
+			) VALUES (:name,:email,:pass,:idperm,:city,:state,:country)",[
 				":name" => $this->getName(),
 				":email" => $this->getEmail(),
 				":pass" => $this->getPass(),
@@ -36,7 +28,7 @@ class User extends Model {
 			]
 		);
 
-		if($stmt) {
+		if ($stmt) {
 
 			throw new \SuccesException("Cadastro concluido");
 		} else {
@@ -45,7 +37,8 @@ class User extends Model {
 		}
 	}
 
-	public function login() {
+	public function login()
+	{
 
 		$sql = new \App\driver\Driver();
 
@@ -53,21 +46,22 @@ class User extends Model {
 		$stmt = $this->select();
 		//"SELECT * FROM user WHERE email = :email AND senha = :senha",[":email" => $this->getEmail(),":senha" => $this->getSenha()]
 
-		if(count($stmt[0]) > 0) {
+		if (count($stmt[0]) > 0) {
 
-	   		self::efetuarLogin($data[0]);
+			self::efetuarLogin($data[0]);
 
 		} else {
 
 			throw new \Exception("Email e/ou senha incorretos.");
 		}
-    }
+	}
 
-    private static function efetuarLogin($data = []){
+	private static function efetuarLogin($data = [])
+	{
 
-        foreach($datas as $key => $value) {
+		foreach ($datas as $key => $value) {
 
-			if(!isset($_SESSION["user"][$key])){
+			if (!isset($_SESSION["user"][$key])) {
 
 				$_SESSION["user"][$key] = $value;
 			} else {
@@ -75,24 +69,25 @@ class User extends Model {
 				throw new \Exception("Você ja está logado");
 				break;
 			}
-        }
-    }
+		}
+	}
 
-    public function select() {
+	public function select()
+	{
 
-    	$sql = new \App\driver\Driver();
+		$sql = new \App\driver\Driver();
 
     	//implement a better query
-    	$stmt = $sql->select($this->getQuery(), $this->getParams());
+		$stmt = $sql->select($this->getQuery(), $this->getParams());
 
-    	if(count($stmt) > 0) {
+		if (count($stmt) > 0) {
 
-   			return $data;
+			return $data;
 
-    	} else {
+		} else {
 
-    		throw new \Exception("Nenhum cliente encontrado");
-    	}
-    }
-    
+			throw new \Exception("Nenhum cliente encontrado");
+		}
+	}
+
 }

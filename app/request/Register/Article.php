@@ -8,7 +8,7 @@ use Source\Article\Article as Article;
 
 \App\request\Request::requestTreatment(function () {
 
-	$title = $_POST["title"];
+	$title = $_POST["title"];	
 	$content = $_POST["content"];
 	$userid = $_POST["user"];
 	$subCategory = $_POST["subCategory"];
