@@ -15,11 +15,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
 
+    </script>
+    <script>
+        $(
             //will be replaced for angular :D
             //jquery
-
             $.ajax({
-                url: '../app/request/Search/scientificArea.php',
+                url: '../app/request/Search/Category.php',
+                data: {
+                    categoria: queryString('id')
+                },
                 dataType: 'JSON',
                 success: function (data) {
 
@@ -29,7 +34,7 @@
                     } else {
                         console.log(data)
 
-                        $("#title").html('Área de conhecimento')
+                        $("#title").html(title)
 
                         for (let i in data) {
 
@@ -41,9 +46,12 @@
                                             <div class="card-panel flow-text">
                                                 <i class="fas fa-leaf medium green-text text-darken-4"></i>
                                                 <h4 class="black-text">` +
-                                                    data[i]['title'] +
-                                                    `</h4>
-                                                <a href="categoria.html?id=` + data[i]['id'] + `" class="waves-effect waves-light btn-large deep-purple darken-2 white-text sub">Acessar</a>
+                                    data[i]['title'] +
+                                    `</h4>
+                                                <a href="subcategoria.php?categoria=` +
+                                    data[
+                                        i]['id'] +
+                                    `" id="cat" class="waves-effect waves-light btn-large deep-purple darken-2 white-text">Acessar</a>
                                             </div>
                                         </div>
                                     `
@@ -54,8 +62,7 @@
                     }
                 }
             })
-
-
+        )
     </script>
     <title>Murdock</title>
 </head>

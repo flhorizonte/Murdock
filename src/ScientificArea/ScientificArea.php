@@ -2,48 +2,34 @@
 
 namespace Source\ScientificArea;
 
-class ScientificArea extends Model
+use \App\driver\Driver as Driver;
+
+final class ScientificArea extends Model
 {
-
-	public function register()
+	public function __construct(Driver $driver)
 	{
+		$this->instance = $driver;
+	}
 
-		$sql = new \App\driver\Driver();
-
-		$stmt = $sql->query("INSERT INTO `areas`(`title`) VALUES (:TITLE)", [":TITLE" => $title]);
+	final public function save()
+	{
+		$stmt = $this->instance->query("INSERT INTO `areas`(`title`) VALUES (:TITLE)", [":TITLE" => $title]);
 
 		if ($stmt) {
-
 			throw new \Exception("Cadastro concluido.");
 		} else {
-
 			throw new \Exception("Falha no cadastro, tente novamente.");
 		}
 	}
 
-
-	public function select()
+	final public function get()
 	{
-
-		$sql = new \App\driver\Driver();
-
-		$data = $sql->select($this->getQuery(), $this->getParams());
+		$data = $this->instance->select($this->getQuery(), $this->getParams());
 
 		if (count($data) < 1) {
-
-			throw new \Exception("Nenhuma area de conhecimento encontrada no banco de dados");
+			throw new \Exception("Nenhuma Área encontrada no banco de dados");
 		} else {
-
 			return $data;
 		}
 	}
-
-	public function getDivTitleAndData()
-	{
-		$this->setQuery("SELECT area.title, area.id  FROM areas area");
-		$data = $this->select();
-
-		\App\request\Request::genDivsTitle($data[0]['title'], $data, 'page=explore&category');
-	}
-
 }

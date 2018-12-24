@@ -2,7 +2,10 @@
 
 namespace Source\Users;
 
-class Model {
+use \App\filter\Filter as Filter;
+
+abstract class Model extends Filter
+{
 
 	public $id;
 	public $idpermission;

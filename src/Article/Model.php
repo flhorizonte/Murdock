@@ -2,13 +2,15 @@
 
 namespace Source\Article;
 
-class Model {
+use \App\filter\Filter as Filter;
 
-	private $title;
-	private $content;
-	private $userid;
-	private $subCategory;
-	private $category;
+abstract class Model extends Filter
+{
+    private $title;
+    private $content;
+    private $userid;
+    private $subCategory;
+    private $category;
     private $area;
     private $query;
     private $params = [];
@@ -17,7 +19,8 @@ class Model {
     /**
      * @return mixed
      */
-    public function getTitle() {
+    public function getTitle()
+    {
         return $this->title;
     }
 
@@ -26,14 +29,16 @@ class Model {
      *
      * @return self
      */
-    public function setTitle($title) {
+    public function setTitle($title)
+    {
         $this->title = $title;
     }
 
     /**
      * @return mixed
      */
-    public function getContent() {
+    public function getContent()
+    {
         return $this->content;
     }
 
@@ -42,14 +47,16 @@ class Model {
      *
      * @return self
      */
-    public function setContent($content) {
+    public function setContent($content)
+    {
         $this->content = $content;
     }
 
     /**
      * @return mixed
      */
-    public function getUserid() {
+    public function getUserid()
+    {
         return $this->userid;
     }
 
@@ -58,14 +65,16 @@ class Model {
      *
      * @return self
      */
-    public function setUserid($userid) {
+    public function setUserid($userid)
+    {
         $this->userid = $userid;
     }
 
     /**
      * @return mixed
      */
-    public function getSubCategory() {
+    public function getSubCategory()
+    {
         return $this->subCategory;
     }
 
@@ -74,7 +83,8 @@ class Model {
      *
      * @return self
      */
-    public function setSubCategory($subCategory) {
+    public function setSubCategory($subCategory)
+    {
         $this->subCategory = $subCategory;
     }
 
@@ -99,8 +109,6 @@ class Model {
     public function setCategory($category)
     {
         $this->category = $category;
-
-        return $this;
     }
 
     /**
@@ -119,8 +127,6 @@ class Model {
     public function setArea($area)
     {
         $this->area = $area;
-
-        return $this;
     }
 
     /**

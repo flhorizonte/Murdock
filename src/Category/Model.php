@@ -2,7 +2,8 @@
 
 namespace Source\Category;
 
-class Model
+use \App\filter\Filter as Filter;
+abstract class Model extends Filter
 {
 
     private $id;
@@ -17,7 +18,6 @@ class Model
      */
     public function getTitle() : string
     {
-
         return $this->title;
     }
 
@@ -28,8 +28,11 @@ class Model
      */
     public function setTitle($title)
     {
-
-        $this->title = $title;
+        if(is_string($title)) {
+            $this->title = $this->trim($title);
+        } else {
+			throw new \Exception("Campo titulo não pode estar vazio e/ou invalido");
+		}
     }
 
     /**
@@ -37,7 +40,6 @@ class Model
      */
     public function getArea() : int
     {
-
         return $this->area;
     }
 
@@ -48,8 +50,11 @@ class Model
      */
     public function setArea($area)
     {
-
-        $this->area = $area;
+        if(is_int($area)) {
+            $this->area = $area;
+        } else {
+			throw new \Exception("Campo Área não pode estar vazio e/ou invalido");
+		}
     }
 
     /**
@@ -68,7 +73,6 @@ class Model
     public function setParams($params)
     {
         $this->params = $params;
-
     }
 
     /**
@@ -87,7 +91,6 @@ class Model
     public function setQuery($query)
     {
         $this->query = $query;
-
     }
 
     /**
@@ -107,6 +110,4 @@ class Model
     {
         $this->id = $id;
     }
-
-
 }

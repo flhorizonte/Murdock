@@ -1,0 +1,20 @@
+{
+    "config":{
+        "database":{
+            "host": "localhost",
+            "user": "root",
+            "pass": "151280",
+            "dbname": "murdock2"
+        },
+        "sessionUsers":{
+            "auth":{
+                "admin": {
+                    "id": ""
+                },
+                "client": {
+                    "id": ""
+                }
+            }
+        }
+    }
+}

@@ -2,7 +2,9 @@
 
 namespace Source\SubCategory;
 
-class Model {
+use \App\filter\Filter as Filter;
+
+abstract class Model extends Filter {
 
 	private $area;
 	private $title;
@@ -27,7 +29,9 @@ class Model {
      */
     public function setArea($area)
     {
-        $this->area = $area;
+        if(in_int($this->empty($area))){
+            $this->area = $area;
+        }
     }
 
     /**
@@ -45,7 +49,11 @@ class Model {
      */
     public function setTitle($title)
     {
-        $this->title = $title;
+        if($this->empty($title)) {
+            $this->title = $title;
+        } else {
+            throw new \Exception("Titulo não pode estar vazio e/ou invalido");
+        }
     }
 
     /**
@@ -63,7 +71,11 @@ class Model {
      */
     public function setCategory($category)
     {
-        $this->category = $category;
+        if(in_int($this->empty($category))) {
+            $this->category = $category;
+        } else {
+            throw new \Exception("Categoria não pode estar vazia e/ou inválida");
+        }
     }
 
     /**
@@ -81,7 +93,11 @@ class Model {
      */
     public function setParams($params)
     {
-        $this->params = $params;
+        if(is_array($params)){
+            $this->params = $params;
+        } else {
+            throw new \Exception("params must be array");
+        }
     }
 
     /**
@@ -99,7 +115,11 @@ class Model {
      */
     public function setQuery($query)
     {
-        $this->query = $query;
+        if(is_string($this->empty($query))) {
+            $this->query = $query;
+        } else {
+            throw new \Exception("Consulta não pode estar vazio e/ou inválida");
+        }
     }
 
     /**
@@ -117,6 +137,10 @@ class Model {
      */
     public function setId($id)
     {
-        $this->id = $id;
+        if(is_int($this->empty($id))) {
+            $this->id = $id;
+        } else {
+            throw new \Exception("Id não pode estar vazio e/ou invalido");
+        }
     }
 }

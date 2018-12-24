@@ -2,8 +2,10 @@
 
 namespace Source\ScientificArea;
 
-class Model {
+use \App\filter\Filter as Filter;
 
+abstract class Model extends Filter
+{
 	private $title;
 	private $query;
 	private $params = [];
@@ -23,8 +25,11 @@ class Model {
 	 */
 	public function setTitle($title)
 	{
-		$this->title = $title;
-
+		if(is_string($this->empty($title))) {
+			$this->title = $this->spaces($title);
+		} else {
+			throw new \Exception("Campo titulo não pode estar vazio e/ou invalido");
+		}
 	}
 
 
@@ -43,8 +48,11 @@ class Model {
 	 */
 	public function setParams($params)
 	{
-		$this->params = $params;
-
+		if(is_array($params)) {
+			$this->params = $params;
+		} else {
+			throw new \Exception("error, parameter must be array");
+		}
 	}
 
 	/**
@@ -62,6 +70,6 @@ class Model {
 	 */
 	public function setQuery($query)
 	{
-		$this->query = $query;
+		$this->query = $this->spaces($query);
 	}
 }
